@@ -1,0 +1,243 @@
+<!--
+Copyright 2023 Adobe. All rights reserved.
+This file is licensed to you under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License. You may obtain a copy
+of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under
+the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+OF ANY KIND, either express or implied. See the License for the specific language
+governing permissions and limitations under the License.
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Asset Selectors</title>
+    <link rel="stylesheet" href="/dnd.d0230694.css">
+    <script src="https://experience.adobe.com/solutions/CQ-assets-selectors/static-assets/resources/assets-selectors.js"></script>
+
+    <script>function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _async_to_generator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+function _ts_generator(thisArg, body) {
+    var f, y, t, g, _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    };
+    return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g;
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+}
+var imsInstance = null;
+var imsProps = {
+    imsClientId: "<IMS_CLIENT_ID_ASSOCIATED_WITH_YOUR_AEM_ASSETS_REPOSITORY>",
+    imsScope: "additional_info.projectedProductContext,openid",
+    redirectUrl: window.location.href,
+    modalMode: true
+};
+function registerIMSTokenService() {
+    var registeredTokenService = PureJSSelectors.registerAssetsSelectorsAuthService(imsProps);
+    imsInstance = registeredTokenService;
+}
+registerIMSTokenService();
+function onClose() {
+    var selectorDialog = document.getElementById("asset-selector-dialog") || document.getElementById("destination-selector-dialog");
+    selectorDialog.close();
+}
+function handleSelection(selection) {
+    onClose();
+}
+function handleNavigateToAsset(asset) {
+// onClose();
+}
+function renderAssetSelectorWithImsFlow() {
+    return _renderAssetSelectorWithImsFlow.apply(this, arguments);
+}
+function _renderAssetSelectorWithImsFlow() {
+    _renderAssetSelectorWithImsFlow = _async_to_generator(function() {
+        var assetSelectorProps, container;
+        return _ts_generator(this, function(_state) {
+            assetSelectorProps = {
+                "onClose": onClose,
+                "handleSelection": handleSelection,
+                rail: true,
+                acvConfig: {
+                    dragOptions: {
+                        allowList: {
+                            "*": true
+                        }
+                    },
+                    selectionType: "multiple"
+                }
+            };
+            container = document.getElementById("asset-selector");
+            PureJSSelectors.renderAssetSelectorWithAuthFlow(container, assetSelectorProps);
+            document.getElementsByClassName("dropzone")[0].style.display = "flex";
+            return [
+                2
+            ];
+        });
+    });
+    return _renderAssetSelectorWithImsFlow.apply(this, arguments);
+}
+function renderSelectionInDropzone(data) {
+    var viewer = document.getElementsByClassName("dropzone")[0];
+    var rows = [];
+    for(var i = 0; i < data.length; i++)rows.push("<li>".concat(data[i].name, "</li>"));
+    viewer.innerHTML = "<ul>" + rows + "</ul>";
+}
+function drop(e) {
+    var data = JSON.parse(e.dataTransfer.getData("collectionviewdata"));
+    console.log("data received: ", data);
+    renderSelectionInDropzone(data);
+    e.preventDefault();
+}
+
+</script>
+</head>
+
+<body class="asset-selectors">
+    <div>
+        <h3>Asset Selectors Consumer Apps in Vanilla JS - Drag and Drop</h3>
+    </div>
+    <div>
+        <button onclick="renderAssetSelectorWithImsFlow()">Asset Selector - Drag & Drop </button>
+    </div>
+    <div style="width: 100%; display: flex">
+        <div class="asset-selector-rail">
+            <div id="asset-selector" style="width: 100%; height: 100%"></div>
+        </div>
+        <div style="position: &quot;relative&quot;; flex: 1">
+            <div class="dropzone" ondrop="drop(event)">
+                <div>
+                    <svg width="191.2" height="97.9" focusable="false">
+                        <path d="M51.5 33h-48A3.543 3.543 0 000 36.5v35A3.543 3.543 0 003.5 75h48a3.543 3.543 0 003.5-3.5v-35a3.543 3.543 0 00-3.5-3.5zm-48 3h48a.472.472 0 01.5.5v30.6L40.5 55.4a2.94 2.94 0 00-2.2-.9 3.1 3.1 0 00-2.2.9l-4.7 5-11.8-12a2.94 2.94 0 00-2.2-.9 3.1 3.1 0 00-2.2.9L3 60.8V36.5a.472.472 0 01.5-.5zM3 71.5v-7.8l13.7-13.8a1.08 1.08 0 01.7-.3.908.908 0 01.7.3L40.2 72H3.5a.472.472 0 01-.5-.5zm48.5.5h-8.6c0-.1-.1-.1-.1-.2l-9.9-10 4.7-5a.908.908 0 01.7-.3.779.779 0 01.7.3L52 70v1.5a.472.472 0 01-.5.5z" stroke="none"></path>
+                        <path d="M41.8 51.3a5.664 5.664 0 004.1-1.7 5.835 5.835 0 001.7-4.1 5.957 5.957 0 00-5.8-5.9 5.85 5.85 0 000 11.7zm-2.7-8.5a3.864 3.864 0 012.7-1.1 3.8 3.8 0 013.8 3.8 3.756 3.756 0 01-3.8 3.8 3.8 3.8 0 01-3.8-3.8 3.864 3.864 0 011.1-2.7zM187.3 35h-27.2l-7.5-6.8a4.713 4.713 0 00-3-1.2h-15.3a3.159 3.159 0 00-3.2 3.2v40.1a3.691 3.691 0 003.7 3.7h52.7a3.691 3.691 0 003.7-3.7V38.7a3.933 3.933 0 00-3.9-3.7zm-53.1-5h15.3a1.284 1.284 0 011 .4l5.1 4.6H134v-4.8a.215.215 0 01.2-.2zM188 70.3a.684.684 0 01-.7.7h-52.7a.684.684 0 01-.7-.7V38h53.3a.684.684 0 01.7.7v31.6zM100.4 86L93 93.4V55.7a1.5 1.5 0 00-3 0v37.7L82.6 86a1.449 1.449 0 00-2.1 0 1.541 1.541 0 000 2.1l8.9 8.9a2.878 2.878 0 002.1.9 2.723 2.723 0 002.1-.9l8.9-8.9a1.485 1.485 0 00-2.1-2.1z" stroke="none"></path>
+                        <path d="M119.5 26a1.538 1.538 0 00-1.5 1.5v43.7a.86.86 0 01-.8.8H97.5a1.5 1.5 0 000 3h19.7a3.8 3.8 0 003.8-3.8V27.5a1.538 1.538 0 00-1.5-1.5zM121 21.4a.749.749 0 00-.1-.5c-.1-.2-.2-.3-.3-.5l-21-20a2.186 2.186 0 00-.5-.3 1.486 1.486 0 00-.6-.1H67.8A3.8 3.8 0 0064 3.8v67.4a3.8 3.8 0 003.8 3.8h17.7a1.5 1.5 0 000-3H67.8a.86.86 0 01-.8-.8V3.8a.86.86 0 01.8-.8H97v16.2a3.8 3.8 0 003.8 3.8h19c.1 0 .2 0 .2-.1h.1c.1 0 .2-.1.3-.1l.1-.1c.1 0 .1-.1.2-.1a2.186 2.186 0 00.3-.5v-.7zm-21-2.2V5l15.7 15h-15a.858.858 0 01-.7-.8z" stroke="none"></path>
+                    </svg>
+                    <h3>Drag and Drop Your Files</h3>
+                    <section>Drop your files here.</section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

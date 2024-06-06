@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+	<title>Asset Selectors</title>
+    <link rel="stylesheet" href="/dnd.d0230694.css">
+    <script src="https://experience.adobe.com/solutions/CQ-assets-selectors/static-assets/resources/assets-selectors.js"></script>
+
+    <script>function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _async_to_generator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
+}
+function _ts_generator(thisArg, body) {
+    var f, y, t, g, _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    };
+    return g = {
+        next: verb(0),
+        "throw": verb(1),
+        "return": verb(2)
+    }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g;
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(_)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+}
+var imsInstance = null;
+var imsProps = {
+    repositoryId: "author-p129970-e1316086.adobeaemcloud.com",
+    imsClientId: "aemcs-spark-assetselector",
+    imsScope: "additional_info.projectedProductContext,openid",
+    redirectUrl: window.location.href,
+    rootPath: "/content/dam/",
+    modalMode: true
+};
+/**
+         * Registers the IMS token service with the PureJSSelectors library, which is required when using `renderAssetSelectorWithAuthFlow` with a pop-up.
+         *
+         * NOTE: If you don't register the token service and your redirectUrl does not match the one you registered with the imsClientId,
+         * the sign-in flow will fail and a page reload might be required. If you use a different redirectUrl where the IMS provider will
+         * redirect to after the user signs in, you must also load this function on that redirect page for the pop-up to work correctly.
+         *
+         * It is recommended that you call `registerAssetsSelectorsAuthService` on page load.
+         *
+         * @function load
+         */ function registerImsAuthService() {
+    // Register the IMS token service with PureJSSelectors.
+    var registeredTokenService = PureJSSelectors.registerAssetsSelectorsAuthService(imsProps);
+    // Store the token service instance in `imsInstance` for use outside of the asset selector.
+    // Some helpful functions:
+    // - registeredTokenService.getAccessToken() - to get the current access token
+    // - registeredTokenService.triggerAuthFlow() or registeredTokenService.signIn() - to trigger the sign-in flow based on the imsProps modalMode setting (true/false);
+    // - registeredTokenService.signOut() - to sign out the user and remove the token
+    // - registeredTokenService.refreshToken() - to refresh the existing token
+    imsInstance = registeredTokenService;
+}
+// Must be register token service before the selectors are rendered.
+registerImsAuthService();
+/**
+         * Closes the Asset Selector dialog when it is called.
+         * This is a helper function used by Asset Selectors UI.
+         *
+         * @function onClose
+         */ function onClose() {
+    var selectorDialog = document.getElementById("asset-selector-dialog");
+    selectorDialog.close();
+}
+/**
+         * Closes the Destination Selector dialog when it is called.
+         * This is a helper function used by Asset Selectors UI.
+         *
+         * @function onClose
+         */ function destinationSelectorOnClose() {
+    var selectorDialog = document.getElementById("destination-selector-dialog");
+    selectorDialog.close();
+}
+/**
+         * Handles the selected asset when it is called.
+         * This is a helper function used by Asset Selectors UI.
+         *
+         * @function handleSelection
+         * @param {object} selection - The selected asset.
+         */ function handleSelection(selection) {
+    console.log("Selected asset:", selection);
+    onClose();
+}
+/**
+         * Handles the selected path when it is called.
+         * This is a helper function used by Asset Selectors UI.
+         *
+         * @function handleOnConfirm
+         * @param {object} selection - The selected path.
+         */ function handleOnConfirm(selection) {
+    console.log("Selected path:", selection);
+    destinationSelectorOnClose();
+}
+function renderAssetSelectorWithImsFlow() {
+    return _renderAssetSelectorWithImsFlow.apply(this, arguments);
+}
+function _renderAssetSelectorWithImsFlow() {
+    _renderAssetSelectorWithImsFlow = /**
+         * Renders an asset selector user interface using the PureJSSelectors library.
+         * When the asset selector is ready to be displayed, it will be shown in a dialog box.
+         *
+         * @async
+         * @function renderAssetSelectorWithImsFlow
+         * @returns {Promise<void>}
+         */ _async_to_generator(function() {
+        var assetSelectorProps, container;
+        return _ts_generator(this, function(_state) {
+            /**
+             * Props for the asset selector UI.
+             *
+             * @typedef {Object} AssetSelectorProps
+             * @property {string} discoveryURL - The URL for the AEM Discovery service.
+             * @property {string} imsOrg - The IMS organization ID for the user.
+             * @property {string} apiKey - The API key for the AEM Assets backend.
+             * @property {Function} onClose - A callback function to be called when the asset selector dialog is closed.
+             * @property {Function} handleSelection - A callback function to be called when an asset is selected.
+             * @property {Function} handleNavigateToAsset - A callback function to be called when the user clicks on an asset to navigate to it.
+             * @property {string} env - The environment where the asset selector is being used.
+             */ /** @type {AssetSelectorProps} */ assetSelectorProps = {
+                "onClose": onClose,
+                "handleSelection": handleSelection,
+                imsOrg: "523BF0605768FF0E7F000101@AdobeOrg",
+                apiKey: "asset_search_service"
+            };
+            // Get the container element where the asset selector will be rendered.
+            container = document.getElementById("asset-selector");
+            /**
+             * Renders the asset selector UI with IMS authentication, and shows the dialog when it's ready.
+             *
+             * @function renderAssetSelectorWithAuthFlow
+             * @param {Element} container - The container element where the asset selector will be rendered.
+             * @param {AssetSelectorProps} props - Props for the asset selector UI.
+             * @param {Function} callback - A callback function to be called when the UI is ready to be displayed.
+             */ PureJSSelectors.renderAssetSelectorWithAuthFlow(container, assetSelectorProps, function() {
+                var assetSelectorDialog = document.getElementById("asset-selector-dialog");
+                assetSelectorDialog.showModal();
+            });
+            return [
+                2
+            ];
+        });
+    });
+    return _renderAssetSelectorWithImsFlow.apply(this, arguments);
+}
+function renderDestinationSelectorWithImsFlow() {
+    return _renderDestinationSelectorWithImsFlow.apply(this, arguments);
+}
+function _renderDestinationSelectorWithImsFlow() {
+    _renderDestinationSelectorWithImsFlow = /**
+         * Renders a Destination Selector UI with IMS authentication.
+         * The UI will use the registered IMS instance (created in registerAssetsSelectorsAuthService) to get the required tokens.
+         * If a valid token is not present, the sign-in flow will be triggered in either pop-up or full page reload mode based on the configurations set in the imsProps.
+         * Note that registerAssetsSelectorsAuthService must be called before triggering this flow.
+         * For best user experience, it is recommended that registerAssetsSelectorsAuthService is called on page load prior to calling this function.
+         *
+         * @async
+         * @function renderDestinationSelectorWithImsFlow
+         * @returns {Promise<void>}
+         */ _async_to_generator(function() {
+        var props, container;
+        return _ts_generator(this, function(_state) {
+            /**
+             * Props for the Destination Selector UI.
+             *
+             * @typedef {Object} DestinationSelectorProps
+             * @property {string} imsOrg - The IMS organization ID for the user.
+             * @property {Function} onClose - A callback function to be called when the Destination Selector dialog is closed.
+             * @property {Function} handleSelection - A callback function to be called when a destination is selected.
+             * @property {string} env - The environment where the Destination Selector is being used.
+             */ /** @type {DestinationSelectorProps} */ props = {
+                "onClose": destinationSelectorOnClose,
+                "handleSelection": handleOnConfirm
+            };
+            // Get the container element where the Destination Selector will be rendered.
+            container = document.getElementById("destination-selector");
+            /**
+             * Renders the Destination Selector UI with IMS authentication, and shows the dialog when it's ready.
+             *
+             * @function renderDestinationSelectorWithAuthFlow
+             * @param {Element} container - The container element where the Destination Selector will be rendered.
+             * @param {DestinationSelectorProps} props - Props for the Destination Selector UI.
+             * @param {Function} callback - A callback function to be called when the UI is ready to be displayed.
+             */ PureJSSelectors.renderDestinationSelectorWithAuthFlow(container, props, function() {
+                var destinationSelectorDialog = document.getElementById("destination-selector-dialog");
+                destinationSelectorDialog.showModal();
+            });
+            return [
+                2
+            ];
+        });
+    });
+    return _renderDestinationSelectorWithImsFlow.apply(this, arguments);
+}
+function logoutImsFlow() {
+    return _logoutImsFlow.apply(this, arguments);
+}
+function _logoutImsFlow() {
+    _logoutImsFlow = /**
+         * Initiates the logout flow for the current IMS user using the registered IMS instance.
+         *
+         * @async
+         * @function logoutImsFlow
+         */ _async_to_generator(function() {
+        return _ts_generator(this, function(_state) {
+            switch(_state.label){
+                case 0:
+                    console.log("Signing out...", imsInstance);
+                    // Call the signOut method on the registered IMS instance to initiate the logout flow.
+                    return [
+                        4,
+                        imsInstance.signOut()
+                    ];
+                case 1:
+                    _state.sent();
+                    return [
+                        2
+                    ];
+            }
+        });
+    });
+    return _logoutImsFlow.apply(this, arguments);
+}
+
+</script>
+</head>
+
+<body class="asset-selectors">
+	<div>
+		<h3>Asset Selectors Consumer Apps in Vanilla JS</h3>
+	</div>
+	<div>
+		<button onclick="renderAssetSelectorWithImsFlow()">Asset Selector - Select Assets with Ims Flow</button>
+    </div>
+    <div>
+        <button onclick="renderDestinationSelectorWithImsFlow()">Destination Selector - Select Assets with Ims Flow</button>
+    </div>
+    <div>
+		<button onclick="location.href='dnd.html'">Asset Selector - Drag & Drop</button>
+    </div>
+    <div>
+		<button onclick="logoutImsFlow()">(Sign Out)</button>
+	</div>
+    <div>
+        <dialog id="asset-selector-dialog">
+            <div id="asset-selector" style="width: calc(100vw - 60px); height: calc(100vh - 80px); margin: -20px"></div>
+        </dialog>
+    </div>
+    <div>
+      <dialog id="destination-selector-dialog">
+          <div id="destination-selector" style="width: calc(100vw - 60px); height: 100vh"></div>
+      </dialog>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+html, body {
+  vertical-align: baseline;
+  border: 0;
+  margin: 10px;
+  padding: 10px;
+  line-height: 30px;
+}
+
+body > div {
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  column-gap: 30px;
+  padding: 20px;
+  display: grid;
+}
+
+label, input, textarea, select {
+  width: 100%;
+  display: table-row;
+}
+
+input[type="submit"] {
+  float: right;
+  width: 100px;
+  margin-top: 20px;
+}
+
+form > div {
+  margin-top: 10px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+footer > a {
+  display: table-row;
+}
+
+/*# sourceMappingURL=index.5524e16b.css.map */

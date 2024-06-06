@@ -1,0 +1,100 @@
+<!-- <license header> -->
+
+  <!DOCTYPE html>
+  <html lang="en" class="spectrum spectrum--medium spectrum--light">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Content automation</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/@spectrum-css/vars/dist/spectrum-global.css">
+    <link rel="stylesheet" href="https://unpkg.com/@spectrum-css/typography/index.css">
+    <script src="/index.0ef871c1.js" defer=""></script>
+    <script src="/index.25689b86.js" defer=""></script>  		
+    <link rel="stylesheet" href="/index.276fa885.css">
+    <link rel="stylesheet" href="/index.5524e16b.css">
+    <script src="https://experience.adobe.com/solutions/CQ-assets-selectors/assets/resources/assets-selectors.js"></script>
+    <!-- <script src="https://experience.adobe.com/solutions/CQ-assets-selectors/static-assets/resources/assets-selectors.js"></script> -->
+    <script src="/index.51d756ae.js"></script>
+
+  <style>.container {
+  display: flex;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+}
+
+.left, .right {
+  background-color: #f2f2f2;
+}
+
+.cta {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.cta button {
+  color: #333;
+  cursor: pointer;
+  background-color: #ddd;
+  border: none;
+  padding: 10px 20px;
+}
+
+</style>
+    <script src="https://experience.adobe.com/solutions/CQ-assets-selectors/static-assets/resources/assets-selectors.js"></script>
+    <script src="/index.51d756ae.js"></script>
+</head>
+<body>
+  <div class="spectrum--large spectrum-Typography spectrum-Site">
+    <div>
+      <h1>Content automation</h1>
+      <form id="actionForm">
+        <div class="container">
+          <div class="column left">
+            <div><label for="cfTemplate">Content Fragment Template</label><textarea id="cfTemplate" name="cfTemplate" placeholder="value"></textarea></div>
+            <div><label for="product">Product </label><textarea id="product " name="product " placeholder="value"></textarea></div>
+            <div><label for="header">Header</label><textarea id="header" name="header" placeholder="value"></textarea></div>
+            <div><label for="date">Date</label><textarea id="date" name="date" placeholder="value"></textarea></div>
+            <div><label for="location">Location</label><textarea id="location" name="location" placeholder="value"></textarea></div>
+          </div>
+          <div class="column right">
+            <div><label for="psdtemplate">PSD Template </label><textarea id="psdtemplate " name="psdtemplate " placeholder="value"></textarea></div>
+            <div><label for="Output Rendition Location">outputRenditionsLocation</label><textarea id="outputRenditionsLocation" name="outputRenditionsLocation" placeholder="value"></textarea></div>
+            <div><label for="Output Rendition Prefix">outputRenditionsFileName</label><textarea id="outputRenditionsFileName" name="outputRenditionsFileName" placeholder="value"></textarea></div>
+            <div><label for="backGround">Back Ground Image</label><textarea id="backGround" name="backGround" placeholder="value"></textarea></div>
+            <div><label for="logo">Logo</label><textarea id="logo" name="logo" placeholder="value"></textarea></div>
+          </div>
+          
+        </div>
+        <div class="cta">  <button type="button">Call to Action</button>  </div>
+
+        <div class="asset-selector">
+          <div>
+            <h3>Asset Selector Playground App</h3>
+          </div>
+          <div>
+            <button onclick="renderAssetSelectorWithImsFlow()">Asset Selector - Select Assets with Ims Flow</button>
+          </div>
+          <div>
+            <dialog id="asset-selector-dialog">
+              <div id="asset-selector" style="width: calc(100vw - 60px); height: calc(100vh - 80px); margin: -20px"></div>
+            </dialog>
+          </div>
+        </div>
+        
+
+        
+      </form>
+    </div>
+    <div>
+      <h2>results</h2>
+      <textarea id="taOutput" readonly="" spellcheck="false" style="min-height: 260px"></textarea>
+    </div>
+  </div>
+</body>
+</html>

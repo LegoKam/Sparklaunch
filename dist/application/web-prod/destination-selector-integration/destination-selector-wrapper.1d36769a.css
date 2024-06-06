@@ -1,0 +1,17 @@
+#integration-properties-guide-dialog {
+  z-index: 99999;
+  background-color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, .1);
+}
+
+#destination-selector-dialog-content {
+  flex-direction: column;
+  height: 100%;
+  display: flex;
+}
+
+/*# sourceMappingURL=destination-selector-wrapper.1d36769a.css.map */
